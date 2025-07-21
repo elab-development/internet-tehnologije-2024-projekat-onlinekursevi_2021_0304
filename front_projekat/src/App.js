@@ -6,6 +6,8 @@ import Courses from './Components/Courses';
 import CourseDetails from './Components/CourseDetails';
 import AddLesson from './Components/AddLesson';
 import LessonDetails from './Components/LessonDetails';
+import MyCourses from './Components/MyCourses';
+import FavoriteCourses from './Components/FavoriteCourses';
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
           <Route path="/kursevi/:courseId" element={<CourseDetails />} />
             <Route path="/kursevi/:courseId/casovi/:casId" element={<LessonDetails />} />
           <Route path="/dodaj-lekciju/:courseId" element={<AddLesson />} />
+          <Route path="/moji-kursevi" element={<MyCourses />} />
+          <Route path="/izabrani-kursevi" element={<FavoriteCourses />} />
         </Routes>
       </div>
     </Router>
