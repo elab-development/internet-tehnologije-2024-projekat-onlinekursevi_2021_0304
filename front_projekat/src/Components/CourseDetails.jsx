@@ -28,7 +28,7 @@ const CourseDetails = () => {
         setLessons(courseData.casovi || []);
         setIsTeacher(courseData.predavac?.id == userId);
         setIsAdmin(sessionStorage.getItem('role') === 'admin' ? true : false);
-        setCanAccessLessons(courseData.slusa_kurs === 'primljen' || isTeacher || isAdmin);
+        setCanAccessLessons(courseData.slusa_kurs === 'primljen' || courseData.predavac?.id == userId || sessionStorage.getItem('role') === 'admin');
       } catch (error) {
         console.error("Greška prilikom učitavanja detalja kursa:", error);
       }

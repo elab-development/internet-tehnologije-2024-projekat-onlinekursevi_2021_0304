@@ -13,6 +13,8 @@ import MaterijalPage from './Components/MaterialPage';
 import Youtube from './Components/Youtube';
 import Teachers from './Components/Teachers';
 import Students from './Components/Students';
+import Categories from './Components/Categories';
+import CreateCourse from './Components/CreateCourse';
 const App = () => {
   return (
     <Router>

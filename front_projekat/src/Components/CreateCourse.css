@@ -44,7 +44,7 @@
   .form-textarea,
   .form-select,
   .form-file-input {
-    width: 100%;
+    width: 100% !important;
     padding: 12px;
     margin-top: 8px;
     border: 1px solid #ddd;
