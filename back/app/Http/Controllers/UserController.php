@@ -137,6 +137,25 @@ public function ukloniIzFavorita($id)
 }
 
 
+public function getTeachers()
+{
+    
+    $teachers = User::where('role', 'nastavnik')->get();
+    return UserResource::collection($teachers);
+}
+
+public function getStudents()
+{
+    $user = Auth::user();
+    if(!$user->jeRole('admin')){
+        return response()->json([
+            'success' => false,
+            'message' => 'Nemate prava da vratite sve studente.'
+        ], 403);
+    }
+    $students = User::where('role', 'student')->get();
+    return UserResource::collection($students);
+}
 
     
 }

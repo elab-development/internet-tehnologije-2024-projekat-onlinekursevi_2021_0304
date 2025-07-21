@@ -39,4 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
      Route::post('/users/dodajUFavorite/{id}', [UserController::class, 'dodajUFavorite']);
      Route::post('/users/ukloniIzFavorita/{id}', [UserController::class, 'ukloniIzFavorita']);
+
+    Route::get('users/nastavnici', [UserController::class, 'getTeachers']);
+    Route::get('users/studenti', [UserController::class, 'getStudents']);
 });
