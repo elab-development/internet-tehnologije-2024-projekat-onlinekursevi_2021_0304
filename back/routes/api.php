@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KursController;
+use App\Http\Controllers\CasController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -18,6 +19,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/kursevi',[KursController::class,'store']);
        Route::get('/kursevi', [KursController::class, 'getKursevi']);
     Route::get('kursevi/{id}', [KursController::class, 'show']);
+
+      Route::apiResource('casovi', CasController::class)->only([
+            'store', 'show', 'destroy'
+        ]);
 
 
 });
