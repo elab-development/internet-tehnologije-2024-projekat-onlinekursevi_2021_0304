@@ -9,6 +9,9 @@ import LessonDetails from './Components/LessonDetails';
 import MyCourses from './Components/MyCourses';
 import FavoriteCourses from './Components/FavoriteCourses';
 import CourseApplications from './Components/CourseApplications';
+import EnrolledCourses from './Components/EnrolledCourses';
+import Teachers from './Components/Teachers';
+import Students from './Components/Students';
 const App = () => {
   return (
     <Router>
@@ -23,6 +26,9 @@ const App = () => {
            <Route path="/moji-kursevi" element={<MyCourses />} />
           <Route path="/kurs-prijave" element={<CourseApplications />} />
           <Route path="/izabrani-kursevi" element={<FavoriteCourses />} />
+           <Route path="/prijavljeni-kursevi" element={<EnrolledCourses />} />
+          <Route path="/nastavnici" element={<Teachers />} />
+          <Route path="/studenti" element={<Students />} />
         </Routes>
       </div>
     </Router>
