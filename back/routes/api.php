@@ -34,4 +34,5 @@ Route::middleware('auth:sanctum')->group(function () {
     
     Route::delete('users/{id}', [UserController::class, 'destroy']);
     Route::get('/users/omiljeni-kursevi', [UserController::class, 'getOmiljeniKursevi']);
+     Route::get('/users/moji-kursevi', [UserController::class, 'mojiKursevi']);
 });

@@ -64,5 +64,30 @@ class UserController extends Controller
 }
 
 
+
+public function mojiKursevi(Request $request)
+{
+    try{
+        $user = Auth::user();
+        if(!$user->jeRole('nastavnik')){
+            return response()->json([
+                'success' => false,
+                'message' => 'Nemate prava da prikazete kurseve jer niste nastavnik.'
+            ], 403);
+        }
+        $user = Auth::user();
+        $kursevi = $user->kursevi;  
+        return KursResource::collection($kursevi);
+    }
+    catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Došlo je do greške prilikom dobijanja kurseva ulogovanog korisnika.',
+            'error' => $e->getMessage(),
+        ], 500);
+    }  
+}
+
+
     
 }
