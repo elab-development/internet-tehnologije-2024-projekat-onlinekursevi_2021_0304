@@ -8,7 +8,8 @@ import AddLesson from './Components/AddLesson';
 import LessonDetails from './Components/LessonDetails';
 import MyCourses from './Components/MyCourses';
 import FavoriteCourses from './Components/FavoriteCourses';
-
+import VideoPlayer from './Components/VideoPlayer';
+import MaterijalPage from './Components/MaterialPage';
 const App = () => {
   return (
     <Router>
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/dodaj-lekciju/:courseId" element={<AddLesson />} />
           <Route path="/moji-kursevi" element={<MyCourses />} />
           <Route path="/izabrani-kursevi" element={<FavoriteCourses />} />
+            <Route path="/video" element={<MaterijalPage />} />
+          <Route path="/video-player" element={<VideoPlayer/>}/>
         </Routes>
       </div>
     </Router>
