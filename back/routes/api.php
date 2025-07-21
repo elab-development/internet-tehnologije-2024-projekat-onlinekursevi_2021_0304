@@ -51,4 +51,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
      Route::post('/prijave',[PrijavaController::class,'store']);
     Route::put('/prijave/{id}',[PrijavaController::class,'update']);
+
+       Route::get('/prijave/moje-prijave', [PrijavaController::class, 'mojePrijave']);
 });

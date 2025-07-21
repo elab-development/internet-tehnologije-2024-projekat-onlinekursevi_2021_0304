@@ -91,6 +91,31 @@ class PrijavaController extends Controller
     }
 
 
+public function mojePrijave(Request $request)
+{
+    try {
+        $user = Auth::user();
+
+        if (!$user->jeRole('student')) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Samo studenti mogu pristupiti svojim prijavama.'
+            ], 403);
+        }
+
+        $prijave = Prijava::where('student_id', $user->id)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
+
+        return PrijavaResource::collection($prijave);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Došlo je do greške pri učitavanju prijava.',
+            'message' => $e->getMessage()
+        ], 500);
+    }
+}
 
 
 
