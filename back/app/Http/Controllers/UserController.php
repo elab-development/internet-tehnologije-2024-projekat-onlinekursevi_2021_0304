@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\KursResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Log;
+use App\Models\Kurs;
 class UserController extends Controller
 {
     public function destroy($id)
@@ -87,6 +88,54 @@ public function mojiKursevi(Request $request)
         ], 500);
     }  
 }
+
+
+
+
+public function dodajUFavorite($id)
+{
+    try {
+       
+        $user = Auth::user();
+        $kurs = Kurs::findOrFail($id);
+
+       
+        if(!$user->jeRole('student')){
+            return response()->json([
+                'success' => false,
+                'message' => 'Nemate prava da dodate kurs u omiljene.'
+            ], 403);
+        }
+     
+        if (!$user->omiljeniKursevi->contains($kurs->id)) {
+            $user->omiljeniKursevi()->attach($kurs->id);
+        }
+       
+        return response()->json(['message' => 'Kurs je uspešno dodat u omiljene.'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Došlo je do greške prilikom dodavanja kursa u omiljene.'], 500);
+    }
+}
+
+public function ukloniIzFavorita($id)
+{
+    try {
+        $user = Auth::user();
+        $kurs = Kurs::findOrFail($id);
+
+        if(!$user->jeRole('student')){
+            return response()->json([
+                'success' => false,
+                'message' => 'Nemate prava da uklonite kurs iz omiljenih.'
+            ], 403);
+        }
+        $user->omiljeniKursevi()->detach($kurs->id);
+        return response()->json(['message' => 'Kurs je uspešno uklonjen iz omiljenih.'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Došlo je do greške prilikom uklanjanja kursa iz omiljenih.'], 500);
+    }
+}
+
 
 
     

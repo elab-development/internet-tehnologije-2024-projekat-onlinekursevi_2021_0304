@@ -29,6 +29,7 @@ class KursResource extends JsonResource
             'azurirano' => $this->updated_at,
             'ocena'=>$this->ocenaStudentaNaKursu($this->id,$loggedUser),
             'slusa_kurs'=>$this->prijavljenNaKurs($this->id,$loggedUser),
+            'omiljeni_kurs'=>$this->omiljeniKurs($this),
         ];
     }
 
@@ -57,5 +58,13 @@ class KursResource extends JsonResource
             return null;
         }
 
+    }
+
+    public function omiljeniKurs($kurs){
+        $user = Auth::user();
+        $omiljeni = $user->omiljeniKursevi()->where('kurs_id',$kurs->id)->first();
+        if($omiljeni)
+            return true;
+        else return false;
     }
 }
