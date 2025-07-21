@@ -10,6 +10,7 @@ import MyCourses from './Components/MyCourses';
 import FavoriteCourses from './Components/FavoriteCourses';
 import VideoPlayer from './Components/VideoPlayer';
 import MaterijalPage from './Components/MaterialPage';
+import Youtube from './Components/Youtube';
 const App = () => {
   return (
     <Router>
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/izabrani-kursevi" element={<FavoriteCourses />} />
             <Route path="/video" element={<MaterijalPage />} />
           <Route path="/video-player" element={<VideoPlayer/>}/>
+           <Route path="/youtube" element={<Youtube />} />
         </Routes>
       </div>
     </Router>

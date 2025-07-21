@@ -7,15 +7,15 @@ const VideoPlayer = ({ videoId }) => {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        // Preuzmi video kao Blob
+       
         const response = await axios.get(`http://localhost:8000/api/materijali/video/${videoId}`, {
           headers: {
             Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
           },
-          responseType: "blob", // Preuzmi kao Blob za podršku Range zaglavljima
+          responseType: "blob", 
         });
 
-        // Kreiraj URL za Blob
+       
         const videoUrl = URL.createObjectURL(response.data);
         setVideoSrc(videoUrl);
       } catch (error) {
