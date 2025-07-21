@@ -16,7 +16,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/kursevi/{id}', [KursController::class, 'destroy']);
     
     Route::post('/kursevi',[KursController::class,'store']);
-    
+       Route::get('/kursevi', [KursController::class, 'getKursevi']);
+    Route::get('kursevi/{id}', [KursController::class, 'show']);
 
 
 });

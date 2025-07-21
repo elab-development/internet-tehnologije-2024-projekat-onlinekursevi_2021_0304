@@ -160,4 +160,74 @@ private function uploadBaner($file, $naziv)
 
 
 
+    public function getKursevi(Request $request)
+    {
+        try {
+            
+            $validator =  $request->validate([
+                'naziv' => 'nullable|string|max:255',
+                'kategorije' => 'nullable|array',
+                'kategorije.*.id' => 'required|integer|exists:kategorije,id', 
+                'kategorije.*.naziv' => 'nullable|string|max:255', 
+            ]);
+    
+         
+            $query = Kurs::query();
+    
+           
+            if ($request->filled('naziv')) {
+                $query->where('naziv', 'like', '%' . $request->naziv . '%');
+            }
+    
+         
+            if ($request->filled('kategorije')) {
+                $categoryIds = collect($request->kategorije)->pluck('id');
+                $query->whereHas('kategorije', function ($q) use ($categoryIds) {
+                    foreach ($categoryIds as $id) {
+                        $q->where('kategorije.id', $id);
+                    }
+                });
+            }
+    
+           
+            if (!$request->filled('naziv') && !$request->filled('kategorije')) {
+                $query->orderBy('naziv', 'asc');
+            }
+    
+            
+            $kursevi = $query->paginate(10);
+    
+        
+           
+                return KursResource::collection($kursevi);
+           
+        } catch (\Exception $e) {
+         
+            return response()->json([
+                'success' => false,
+                'message' => 'Došlo je do greške prilikom obrade zahteva.',
+                'error' => $e->getMessage(),
+            ], 500); 
+        }
+    
+    }
+
+
+    
+public function show($id)
+{
+    try{
+
+        $kurs = Kurs::findOrFail($id);
+        return new KursResource($kurs);
+    }
+    catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Došlo je do greške prilikom učitavanja kursa. Pokušajte ponovo.'
+        ], 500);
+    }
+    
+}
+
+
 }
