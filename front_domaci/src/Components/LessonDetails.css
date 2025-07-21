@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  h1, h2 {
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  nav {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 0 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.2rem;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .lesson-details-page {
+    padding: 120px 20px 20px;
+    width: 100vw;
+    margin: 0 auto;
+    
+    height: 100vh;
+  }
+  
+  .lesson-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  .lesson-video {
+    margin-bottom: 40px;
+  }
+  
+  .lesson-video h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .lesson-video video {
+    width: 90%;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .lesson-images {
+    margin-bottom: 40px;
+  }
+  
+  .lesson-images h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .image-item img:hover {
+    transform: scale(1.05);
+  }
+  
+  .lesson-pdfs {
+    margin-bottom: 40px;
+  }
+  
+  .lesson-pdfs h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .pdf-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pdf-item {
+    margin-bottom: 10px;
+  }
+  
+  .pdf-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  .pdf-item a:hover {
+    text-decoration: underline;
+  }
+  
