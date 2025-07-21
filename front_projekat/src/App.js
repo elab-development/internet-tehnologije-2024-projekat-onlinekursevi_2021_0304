@@ -31,6 +31,8 @@ const App = () => {
            <Route path="/youtube" element={<Youtube />} />
              <Route path="/nastavnici" element={<Teachers />} />
           <Route path="/studenti" element={<Students />} />
+             <Route path="/kategorije" element={<Categories />} />
+          <Route path="/napravi-kurs" element={<CreateCourse />} />
         </Routes>
       </div>
     </Router>
