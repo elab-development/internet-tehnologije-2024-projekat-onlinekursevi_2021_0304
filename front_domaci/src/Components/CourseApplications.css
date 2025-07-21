@@ -1,0 +1,23 @@
+.applications-page{
+    width: 100vw;
+  height: 100vh;
+}
+.applications-container {
+  padding: 20px;
+}
+
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.applications-table th,
+.applications-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.applications-table th {
+  background-color: #f0f0f0;
+}
